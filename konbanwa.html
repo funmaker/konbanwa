@@ -1,0 +1,171 @@
+﻿<!DOCTYPE html>
+<!--TODO : share -->
+<!-- homepage by !noha/.gytc - (noha/noga on rizon) || javascript by nullbyte (nullbyte on rizon)-->
+
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	<title>New Tab</title>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<script src="jquery-2.1.1.min.js"></script>
+	<script src="script.js"></script>
+</head>
+<body>
+	<h1 align="center" id="message"></h1>
+
+	<div class="boxed">
+		<span>4chan</span>»
+			<a style="padding-left:7px" href="https://boards.4chan.org/a/">anime</a>
+			<a href="https://boards.4chan.org/g/">tech</a>
+			<a href="https://boards.4chan.org/sci/">science</a>
+		</br>
+		<span>social</span>»
+			<a style="padding-left:7px" href="http://youtube.com/feed/subscriptions">youtube</a>
+			<a href="http://myanimelist.net/panel.php">mal</a>
+			<a href="https://s.student.pwr.edu.pl/iwc_static/c11n/login_student_pwr_wroc_pl.html">smail</a>
+		</br>
+		<span>cloud</span>»
+			<a style="padding-left:7px" href="https://drive.google.com/">gdrive</a>
+			<a href="http://dropbox.com">dropbox</a>
+			<a href="http://puush.me/account">puush</a>
+		</br>
+		<span>work</span>»
+			<a style="padding-left:7px" href="https://mail.13facesgames.com/">mail</a>
+			<a href="https://gitlab.13facesgames.com/">gitlab</a>
+			<a href="https://redmine.13facesgames.com/">redmine</a>
+		</br>
+		<span>other</span>»
+			<a style="padding-left:7px" href="http://mail.google.com">gmail</a>
+			<a href="http://jadisco.pl">jadisco</a>
+			<a href="http://www.vinesauce.com/">vinesauce</a>
+		</br>
+		<div id="search">
+			<form method="get" action="http://www.google.com/search"> <input id="focus" type="text" placeholder="google" value="" name="q" tabindex=1> </form>
+			<form method="get" action="http://en.wikipedia.org/w/index.php"> <input type="text" placeholder="wikipedia" value="" name="search" tabindex=2> </form>
+			<form method="get" action="https://www.youtube.com/results"> <input type="text" placeholder="youtube" value="" name="search_query" tabindex=3> </form>
+			<form method="get" action="http://translate.google.com/"> <input type="text" placeholder="translate" value="" name="text" tabindex=4> </form>
+		</div>
+	</div>
+	<div id="buttons">
+		<div class="button" id="bNotes"></div><br>
+		<div class="button" id="bFeed"><div id="cFeed"></div></div><br>
+		<div class="button" id="bTimetable"></div><br>
+		<div class="button" id="bCalendar"></div>
+	</div>
+	<img id="imagehover" hidden></img>
+	<div id="feedlistWrap" class="sidemenu">
+		<div id="feedlist">
+			<div id="scrollTest"></div>
+			<div class="dateDivider"><span>Now</span></div>
+			<div id="threads" style="min-height: 12px;"></div>
+		</div>
+	</div>
+	<div id="timetableWrapWrap" class="sidemenu">
+		<div id="hours">
+			<div class="hour"><span>07:00</span></div>
+			<div class="hour"><span>08:00</span></div>
+			<div class="hour"><span>09:00</span></div>
+			<div class="hour"><span>10:00</span></div>
+			<div class="hour"><span>11:00</span></div>
+			<div class="hour"><span>12:00</span></div>
+			<div class="hour"><span>13:00</span></div>
+			<div class="hour"><span>14:00</span></div>
+			<div class="hour"><span>15:00</span></div>
+			<div class="hour"><span>16:00</span></div>
+			<div class="hour"><span>17:00</span></div>
+			<div class="hour"><span>18:00</span></div>
+			<div class="hour"><span>19:00</span></div>
+			<div class="hour"><span>20:00</span></div>
+		</div>
+		<div id="timetableWrap">
+			<div id="timetable">
+				<div class="day"><div class="dayTitle">Monday</div><div class="dayBorder"></div></div>
+				<div class="day"><div class="dayTitle">Tuesday</div><div class="dayBorder"></div></div>
+				<div class="day"><div class="dayTitle">Wednesday</div><div class="dayBorder"></div></div>
+				<div class="day"><div class="dayTitle">Thrusday</div><div class="dayBorder"></div></div>
+				<div class="day"><div class="dayTitle">Friday</div><div class="dayBorder"></div></div>
+			</div>
+		</div>
+		<div class="button" id="bMore">▶</div>
+	</div>
+	<div id="notesWrap" class="sidemenu">
+		<div id="notesButtons">
+			<div class="button" id="bNew">New</div>
+			<div class="button" id="bClose">Del</div>
+			<div class="button" id="bRename">Rnm</div>
+			<div class="button" id="bEncrypt">EnC</div>
+			<div class="button" id="bDecrypt">DeC</div>
+			<div class="button" id="bInfo">Inf</div>
+			<div class="button" id="bFullscreen">▶</div>
+		</div>
+		<div id="notes">
+			<div id="tabs"></div>
+			<div id="editor"></div>
+			<div id="cryptLock">
+				<div class="lock">
+					File encrypted.<br>
+					Enter password:<br>
+					<input id="cryptInput" type="password" placeholder="decryption key">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="calendarWrap" class="sidemenu">
+		<table id="month">
+			<tr>
+				<td>Monday</td>
+				<td><div></div>Tuesday</td>
+				<td><div></div>Wednesday</td>
+				<td><div></div>Thrusday</td>
+				<td><div></div>Friday</td>
+				<td><div></div>Saturday</td>
+				<td><div></div>Sunday</td>
+			</tr>
+		</table>
+		<div id="notifEditor" hidden>
+			<div>
+				<span>Notification options:</span>
+				<input id="notifTitle" placeholder="title" type="text"></input>
+				<textarea id="notifDesc" placeholder="description"></textarea>
+				<table id="notifIcons"><tr>
+					<td><img src="note.png"></img></td>
+					<td><img src="important.png"></img></td>
+					<td><img src="exam.png"></img></td>
+					<td><img src="birthday.png"></img></td>
+					<td class="active" style="max-width:128px;overflow:hidden;">
+						<select id="notifRepeat">
+							<option value="once">Once</option>
+							<option value="week">Weekly</option>
+							<option value="biweek">Biweekly</option>
+							<option value="month">Monthly</option>
+							<option value="year">Annually</option>
+						</select>
+					</td>
+				</tr></table><br>
+				<table id="notifDate"><tr>
+					<td id="notifDay" class="active"><input type="number"></input></td>
+					<td style="color:#C8C8C8;">.</td>
+					<td id="notifMonth" class="active"><input type="number"></input></td>
+					<td style="color:#C8C8C8;">.</td>
+					<td id="notifYear" class="active" style="width:84px;"><input type="number"></input></td>
+					<td class="lessactive"><img src="calendar.png"></img></td>
+				</tr></table>
+				<table id="notifDays"><tr>
+					<td>M</td>
+					<td>T</td>
+					<td>W</td>
+					<td>T</td>
+					<td>F</td>
+					<td>S</td>
+					<td>S</td>
+				</tr></table>
+				<table id="notifWeeks"><tr>
+					<td style="width:150px;">Even weeks</td>
+					<td style="width:150px;">Odd weeks</td>
+				</tr></table>
+			</div>
+		</div>
+	</div>
+</body>

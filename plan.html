@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang='pl_PL' xml:lang='pl_PL' xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>Plan PWR</title>
+<meta content='text/html; charset=utf-8' http-equiv='content-type'>
+<style>
+  html,body,div,span,h1,h2,h3,h4,h5,h6,p,a,strong,ul,li,fieldset,form,label {
+    background:transparent;
+    border:0;
+    font-size:100%;
+    margin:0;
+    padding:0;
+    vertical-align:baseline;
+  }
+  
+  body {
+    color:#222;
+    font-family:'lucida grande', 'Segoe UI', arial, verdana, 'lucida sans unicode', tahoma, sans-serif;
+    font-size:10px;
+  }
+  #schedule {
+    width: 1007px;
+  }
+  
+  #schedule-main {
+    margin: auto;
+    width: 1005px;
+    border: 1px solid #ddd;
+    overflow: hidden;
+  }
+  
+  #schedule #days  {
+    overflow: hidden;
+    padding-left: 50px;
+  }
+  
+  #schedule #days div {
+    float: left;
+    text-align: center;
+    padding: 5px 0;
+    width: 190px;
+    border-left: 1px solid #ddd;
+  }
+  
+  #schedule #hours {
+    float: left;
+    width: 50px;
+    margin-top: -6px;
+  }
+  
+  #schedule #hours div {
+    text-align: center;
+    width: 50px;
+    height: 48px;
+  }
+  
+  #schedule .day {
+    width: 190px;
+    height: 720px;
+    border-left: 1px solid #ddd;
+    float: left;
+    background: #eee;
+    position: relative;
+  }
+  
+  #schedule .entry {
+    position: absolute;
+    width: 100%;
+  }
+  
+  #schedule .entry .wrap {
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    height: 100%;
+    padding: 0 3px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  #schedule .entry .n { font-weight: bold; font-size: 11px;}
+  
+  #schedule .sep {
+    display: block;
+    height: 47px;
+    border-top: 1px solid #ddd;
+  }
+  
+  #schedule .w_2 {
+    width: 87px;
+    margin-left: 95px;
+  }
+  
+  #schedule .w_1 {
+    width: 87px;
+  }
+  
+  #schedule .w_2_wider {
+    width: 106px;
+    margin-left: 76px;
+  }
+  
+  #schedule .w_1_wider {
+    width: 106px;
+  }
+  
+  #schedule #legend {
+    padding: 2px 0;
+    float:left;
+    width: 400px;
+    padding-left: 51px;
+  }
+  
+  #schedule #legend span {
+    padding: 5px;
+    float: left;
+    margin-right: 2px;
+  }
+  
+  /* SIX */
+  
+  #schedule.six {
+    width: 1006px;
+  }
+  
+  #schedule.six #schedule-main {
+    width: 1004px;
+  }
+  
+  #schedule.six #days div {
+    width: 158px;
+  }
+  
+  #schedule.six .day {
+    width: 158px;
+  }
+  
+  #schedule.six .w_2_wider {
+    margin-left: 44px;
+  }
+  
+  #schedule.six .w_1 {
+    width: 71px;
+  }
+  
+  #schedule.six .w_2 {
+    width: 71px;
+    margin-left: 79px;
+  } 
+  
+  #schedule .t {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    font-size: 12px;
+    opacity: 0.4;
+  }
+  
+  #schedule .n {
+    max-height: 28px;
+    overflow: hidden;
+  }
+  
+  
+  /* SEVEN */
+  #schedule.seven {
+    width: 1004px;
+  }
+  
+  #schedule.seven #schedule-main {
+    width: 1002px;
+  }
+  
+  #schedule.seven #days div {
+    width: 135px;
+  }
+  
+  #schedule.seven .day {
+    width: 135px;
+  }
+  
+  #schedule.seven .w_2_wider {
+    margin-left: 21px;
+  }
+  
+  #schedule.seven .w_1, #schedule.seven .w_2 {
+    width: 59px;
+  }
+  
+  #schedule.seven .w_2 {
+    margin-left: 68px;
+  }
+  #schedule a { display: none; }
+  #copy {
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    text-align: right;
+  }
+  #wrapper { width: 1007px; position: relative; }
+</style>
+<script type="text/javascript">
+
+
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-9997784-10', {});
+
+
+
+
+
+
+
+
+
+
+
+   ga('send', 'pageview');
+
+
+</script></head>
+<body>
+<div id='wrapper'>
+<style>
+  .c_X {
+              background-color: #ccc1ec;
+              border-color: #5c3ab2;
+              color: #5c3ab2;
+            }
+  .c_S {
+              background-color: #f5dcc0;
+              border-color: #f38e00;
+              color: #f38e00;
+            }
+  .c_P {
+              background-color: #efbcf0;
+              border-color: #bb3abd;
+              color: #bb3abd;
+            }
+  .c_L {
+              background-color: #a5c4f7;
+              border-color: #1c64dc;
+              color: #1c64dc;
+            }
+  .c_C {
+              background-color: #aeed91;
+              border-color: #47ae03;
+              color: #47ae03;
+            }
+  .c_W {
+              background-color: #f3b6b7;
+              border-color: #e63021;
+              color: #e63021;
+            }
+</style>
+<div class='' id='schedule'>
+<div id='schedule-main'>
+<div id='days'>
+<div>Poniedziałek</div>
+<div>Wtorek</div>
+<div>Środa</div>
+<div>Czwartek</div>
+<div>Piątek</div>
+</div>
+<div id='hours'>
+<div>07:00</div>
+<div>08:00</div>
+<div>09:00</div>
+<div>10:00</div>
+<div>11:00</div>
+<div>12:00</div>
+<div>13:00</div>
+<div>14:00</div>
+<div>15:00</div>
+<div>16:00</div>
+<div>17:00</div>
+<div>18:00</div>
+<div>19:00</div>
+<div>20:00</div>
+<div>21:00</div>
+</div>
+<div class='day'>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<div class='entry' style='top: 108px; height: 84px'>
+<div class='c_W wrap'>
+<div class='h'>9<sup>15</sup>-11<sup>00</sup></div>
+<div class='n'>Logika i struktury formalne</div>
+<div class='l'>C-13 / 1.30</div>
+<div class='p'>Dr Szymon Żeberski</div>
+<div class='t'>W</div>
+<a href="/schedules/254475/entries/2786381/edit" rel="facebox">edit</a>
+</div>
+</div>
+<div class='entry' style='top: 204px; height: 84px'>
+<div class='c_W wrap'>
+<div class='h'>11<sup>15</sup>-13<sup>00</sup></div>
+<div class='n'>Wstęp do informatyki i program</div>
+<div class='l'>A-1 / 314</div>
+<div class='p'>Dr Przemysław Kobylański</div>
+<div class='t'>W</div>
+<a href="/schedules/254475/entries/2786378/edit" rel="facebox">edit</a>
+</div>
+</div>
+<div class='entry' style='top: 300px; height: 84px'>
+<div class='c_C wrap'>
+<div class='h'>13<sup>15</sup>-15<sup>00</sup></div>
+<div class='n'>Algebra z geometrią analit.</div>
+<div class='l'>C-7 / 303A</div>
+<div class='p'>Dr Krzysztof Majcher</div>
+<div class='t'>C</div>
+<a href="/schedules/254475/entries/2786379/edit" rel="facebox">edit</a>
+</div>
+</div>
+<div class='entry' style='top: 396px; height: 80px'>
+<div class='c_C wrap'>
+<div class='h'>15<sup>15</sup>-16<sup>55</sup></div>
+<div class='n'>Logika i struktury formalne</div>
+<div class='l'>C-11 / 2.11</div>
+<div class='p'>Mgr Marcin Michalski</div>
+<div class='t'>C</div>
+<a href="/schedules/254475/entries/2786380/edit" rel="facebox">edit</a>
+</div>
+</div>
+</div>
+<div class='day'>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+</div>
+<div class='day'>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<div class='entry' style='top: 396px; height: 80px'>
+<div class='c_W wrap'>
+<div class='h'>15<sup>15</sup>-16<sup>55</sup></div>
+<div class='n'>Algebra z geometrią analit.</div>
+<div class='l'>C-13 / 1.27</div>
+<div class='p'>Dr Krzysztof Majcher</div>
+<div class='t'>W</div>
+<a href="/schedules/254475/entries/2786384/edit" rel="facebox">edit</a>
+</div>
+</div>
+</div>
+<div class='day'>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<div class='entry' style='top: 24px; height: 72px'>
+<div class='c_L w_1_wider wrap'>
+<div class='h'>7<sup>30</sup>-9<sup>00</sup> | TN</div>
+<div class='n'>Wstęp do informatyki i program</div>
+<div class='l'>D-1 / 317.2</div>
+<div class='p'></div>
+<div class='t'>L</div>
+<a href="/schedules/254475/entries/2786386/edit" rel="facebox">edit</a>
+</div>
+</div>
+<div class='entry' style='top: 108px; height: 84px'>
+<div class='c_W wrap'>
+<div class='h'>9<sup>15</sup>-11<sup>00</sup></div>
+<div class='n'>Logika i struktury formalne</div>
+<div class='l'>A-1 / 314</div>
+<div class='p'>Dr Szymon Żeberski</div>
+<div class='t'>W</div>
+<a href="/schedules/254475/entries/2786382/edit" rel="facebox">edit</a>
+</div>
+</div>
+<div class='entry' style='top: 204px; height: 84px'>
+<div class='c_C wrap'>
+<div class='h'>11<sup>15</sup>-13<sup>00</sup></div>
+<div class='n'>Analiza matematyczna 1</div>
+<div class='l'>C-7 / 303A</div>
+<div class='p'>Dr Robert Rałowski</div>
+<div class='t'>C</div>
+<a href="/schedules/254475/entries/2786383/edit" rel="facebox">edit</a>
+</div>
+</div>
+<div class='entry' style='top: 300px; height: 84px'>
+<div class='c_C w_1_wider wrap'>
+<div class='h'>13<sup>15</sup>-15<sup>00</sup> | TN</div>
+<div class='n'>Wstęp do informatyki i program</div>
+<div class='l'>C-7 / 202</div>
+<div class='p'>Dr Przemysław Kobylański</div>
+<div class='t'>C</div>
+<a href="/schedules/254475/entries/2786387/edit" rel="facebox">edit</a>
+</div>
+</div>
+<div class='entry' style='top: 396px; height: 80px'>
+<div class='c_W wrap'>
+<div class='h'>15<sup>15</sup>-16<sup>55</sup></div>
+<div class='n'>Algebra z geometrią analit.</div>
+<div class='l'>A-1 / 314</div>
+<div class='p'>Dr Krzysztof Majcher</div>
+<div class='t'>W</div>
+<a href="/schedules/254475/entries/2786385/edit" rel="facebox">edit</a>
+</div>
+</div>
+</div>
+<div class='day'>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<span class='sep'></span>
+<div class='entry' style='top: 108px; height: 132px'>
+<div class='c_W wrap'>
+<div class='h'>9<sup>15</sup>-12<sup>00</sup></div>
+<div class='n'>Analiza matematyczna 1</div>
+<div class='l'>A-1 / 314</div>
+<div class='p'>Dr Rafał Kapelko</div>
+<div class='t'>W</div>
+<a href="/schedules/254475/entries/2786388/edit" rel="facebox">edit</a>
+</div>
+</div>
+</div>
+<div id='legend'>
+<span class='c_W'>Wykład</span>
+<span class='c_C'>Ćwiczenia</span>
+<span class='c_S'>Seminarium</span>
+<span class='c_L'>Zajęcia laboratoryjne</span>
+<span class='c_P'>Projekt</span>
+<span class='c_X'>Inne</span>
+</div>
+</div>
+</div>
+
+<div id='copy'>
+Plan wygenerowany przez
+<a href="/n3334dd85gcr">http://plan-pwr.pl</a>
+| Tymon Tobolski
+(<a href="/n3334dd85gcr">http://teamon.eu</a>)
+2010-2014
+</div>
+</div>
+</body>
+</html>
